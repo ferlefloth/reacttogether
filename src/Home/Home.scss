@@ -33,6 +33,7 @@ header{
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       
       //im not responsive. Make me and my siblings work on all devices
 
@@ -41,6 +42,7 @@ header{
         background: #fff;
         border-radius: 1em;
         padding: 1.2em;
+        
         p{
           color: #000;
         }
@@ -52,6 +54,9 @@ header{
         }
         img{
           margin-bottom: 1em;
+          width: 100%;
+          max-width: 400px;
+          height: auto;
           //I may have a variable aspect ratio. Make me responsive watever my size is.
         }
         a{
