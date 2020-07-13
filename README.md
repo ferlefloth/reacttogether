@@ -15,6 +15,7 @@ React / API
 
 -Faltó que, en el caso de NO haber posters ( el JSON responde con un {Poster: N/A}), Creo que se podría arreglar con una validación en el renderizado, poniendo como reemplazo un tipo de imagen que muestre que no hay Poster. 
 
+Con el comando NPM START se inicia la aplicación 
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
