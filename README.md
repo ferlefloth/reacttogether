@@ -1,3 +1,23 @@
+Challenge Together /w - Fernando Lefloth
+
+React / API
+
+-----------------------Observaciones a contemplar a la hora de leer el código---------------------------
+
+-Se editó el componente Home.js, se realizó el fetch desde el front pudiendo así, renderizar las búsequedas de cada pelicula.
+
+-Se agregó la librería Sweet Alert 2 , para que cuando muestre un error por pantallas, sea más estético
+
+-Cada una de las funciones está comentada con una breve explicación de que hace cada una.
+
+
+-Faltó editar la barra de búsqueda.
+
+-Faltó que, en el caso de NO haber posters ( el JSON responde con un {Poster: N/A}), Creo que se podría arreglar con una validación en el renderizado, poniendo como reemplazo un tipo de imagen que muestre que no hay Poster. 
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
 ### OFFCODE
 
 # React \ API

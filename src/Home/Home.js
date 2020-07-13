@@ -3,47 +3,48 @@ import './Home.scss';
 import Swal from 'sweetalert2'
 
 
-/* Se cambio el class por function, me siento más comodo armando componentes con funciones*/
+//Se cambio el class por function, me siento más comodo armando componentes con funciones
 
 function Home(){
 
  const API_KEY= '9d4c9018'
 
- const [movies, setMovies]= useState([]) 
+ const [movies, setMovies]= useState([])  //Acá se guardan los valores del fetch, son todas las peliculas.
  const [userInput, setUserInput] = useState('')
- const [imdbID,setImdbID] =useState('') 
- const [thereIsResult, setThereIsResult] = useState(false)
+ 
+ const [thereIsResult, setThereIsResult] = useState(false) //flag que limpiará la búsqueda o mostrará los resultados
  
 
-/*Este es el evento que tomará los datos de la pelicula que ingresara el usuario*/
+//Evento por el cual el usuario ingresará los datos de la pelicula
 
 const handleChange = event => {
   setUserInput(event.target.value)
   
 }
 
+//Función que disparará el evento para generar el fetch a la url con su respectiva API_KEY y el dato de la película que ingresó el usuario
 const handleSubmit = event => {
   event.preventDefault()
   
   
   fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${userInput}`).then(
     resp => {
-      // Se convierte la respuesta a json para que sea maleable la info. Se podrá mostrar.
+      // Se convierte la respuesta a json para que se pueda manipular las keys con sus respectivas values.
       resp.json().then(data => {
       
         try{
           
-          if(data.Search){
+          if(data.Search){ //si el fetch fue exitoso, coloca todas las movies en una variable que estara definida por el useState
           setMovies(data.Search)
-          setThereIsResult(true)
-          }else{ // EN el caso de que conteste, pero no existan pelis. limpia
+          setThereIsResult(true) //Flag para mostrar los resultados
+          }else{ // EN el caso de que conteste, pero no existan movies. no muestra el article y se disparará una sweet alert con el mensaje de error
             setThereIsResult(false)
             Swal.fire({
               text: 'No se encuentra esta pelicula en el Catálogo',
               icon: 'error'
              })
           }
-        }catch(e){ //responde un 500 
+        }catch(e){ // 
           Swal.fire({
            text: 'No se encuentra esta pelicula en el Catálogo',
            icon: 'error'
@@ -59,7 +60,7 @@ const handleSubmit = event => {
 }
 
 
-  const imdbLink = `https://www.imdb.com/title/${imdbID}`
+
   return (
   <>
     <div className="App">
@@ -81,14 +82,10 @@ const handleSubmit = event => {
         </form>
 
       <div className="results">
-          {/* <articleComponent title={title}
-                            poster={poster}
-                            year={year}
-                            imdbLink={imdbLink}
-        /> */}
-        {thereIsResult == true && movies != null ? (
+      
+        {thereIsResult == true && movies != null ? ( //validación en la cual se utiliza el flag, si valida a true y movies contiene informacion. mostrará cada pelicula con su respectivas caracteristicas
 
-        movies.map( movie =>{
+        movies.map( movie =>{ //por cada movie que se renderiza, se le asigna su titulo, su poster, su año y su link para ver en linea. Es un Renderizado Condicional
           return(
                 <article>
                 <h3>{movie.Title}</h3>
@@ -98,7 +95,7 @@ const handleSubmit = event => {
                   )
             }
         )
-      ) : (
+      ) : (//al ser un renderizado condicional, en el caso que movies este vacío no muestra nada
        null
       )}
        
