@@ -1,4 +1,4 @@
-Challenge Together /w - Fernando Lefloth
+Challenge Together /W - Fernando Lefloth
 
 React / API
 
